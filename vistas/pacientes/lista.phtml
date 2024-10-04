@@ -1,0 +1,11 @@
+<?php include '../hospital/templates/header.phtml'; ?>
+
+<h1>Listado de Pacientes</h1>
+<ul>
+    <?php foreach ($pacientes as $paciente): ?>
+        <li><?= $paciente['nombre'] ?> <?= $paciente['apellido'] ?> (Usuario: <?= $paciente['usuario'] ?>)</li>
+    <?php endforeach; ?>
+</ul>
+<a href="/admin/pacientes/agregar">Agregar Paciente</a>
+
+<?php include '../hospital/templates/footer.phtml'; ?>
