@@ -1,4 +1,5 @@
 <?php
+include 'config.php';
 
 class Usuario {
     public static function validar($usuario, $contrasena) {

@@ -1,4 +1,5 @@
 <?php
+include 'config.php';
 
 class Paciente {
     public static function obtenerTodos() {
@@ -7,10 +8,10 @@ class Paciente {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function agregar($nombre, $apellido, $usuario, $contrasena) {
+    public static function agregar($nombre, $apellido, $usuario, $password) {
         $db = Database::getConnection();
-        $stmt = $db->prepare("INSERT INTO pacientes (nombre, apellido, usuario, contrasena) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$nombre, $apellido, $usuario, password_hash($contrasena, PASSWORD_DEFAULT)]);
+        $stmt = $db->prepare("INSERT INTO pacientes (nombre, apellido, usuario, password) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$nombre, $apellido, $usuario, password_hash($password, PASSWORD_DEFAULT)]);
     }
 
     public static function obtenerPorId($id) {

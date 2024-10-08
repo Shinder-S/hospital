@@ -1,3 +1,13 @@
+<?php
+include 'UsuarioControlador.php'; // Incluye el controlador de usuarios
+
+$controller = new UsuarioControlador(); // Crea una instancia del controlador
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $controller->login(); // Llama al método de login del controlador
+}
+?>
+
 <?php include '../templates/header.phtml'; ?>
 
 <h2>Iniciar sesión</h2>
@@ -18,4 +28,4 @@
     </a>
 <?php endif; ?>
 
-<?php include '../templates/footer.phtml'; ?>
+<?php include __DIR__ . '/../templates/header.phtml'; ?>

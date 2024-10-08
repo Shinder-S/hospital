@@ -1,4 +1,5 @@
 <?php
+include 'Paciente.php';
 
 class PacientesControlador {
     public function listar() {

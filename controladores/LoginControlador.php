@@ -17,6 +17,9 @@ class LoginControlador {
             include '../vistas/login/login.phtml';
         }
     }
+    public function showLogin() {
+        include '../vistas/login/login.phtml'; // Asegúrate de que la ruta sea correcta
+    }
 
     public function logout() {
         session_destroy();
