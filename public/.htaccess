@@ -1,8 +1,0 @@
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} -f [OR]
-    RewriteCond %{REQUEST_FILENAME} -d
-
-    RewriteRule ^admin/pacientes$ index.php?controlador=pacientes&action=listar [L]
-    RewriteRule ^admin/citas$ index.php?controlador=citas&action=listar [L]
-</IfModule>    

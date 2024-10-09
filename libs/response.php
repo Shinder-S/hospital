@@ -2,4 +2,3 @@
     class Response {
         public $user = null;
     }
-?>

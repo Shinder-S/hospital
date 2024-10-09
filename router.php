@@ -1,76 +1,58 @@
 <?php
 //Primero que nada definimos nuestra URL base del proyecto
+define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
-define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+require_once "./app/controladores/CitasControlador.php";
+require_once "./app/controladores/AuthControlador.php";
+require_once "./libs/response.php";
+require_once "./middleware/auth.middleware.php";
 
-//Este $action nos sirve para determinar cual sera la acción por defecto si no se envia nada
-$action = 'home';
 if (!empty($_GET['action'])) {
-    $action = $_GET['action'];
+    $accion = $_GET['action'];
+} else {
+    $accion = 'home';
 }
 
-$params = explode('/', $action);
+$res = new Response();
+
+$params = explode('/', $accion);
 
 //Definimos nuestra tabla de ruteo
 
 switch ($params[0]) {
     case 'home':
-        echo 'Estamos en el home!';
+        sessionAuthMiddleware($res);
+        $controlador = new CitasControlador();
+        $controlador->mostrarHome();
         break;
     case 'guardar-usuario':
-            sessionAuthMiddleware($res); 
-            $controller = new UsuarioControlador(); // Cambia AuthController a UsuarioControlador
-            $controller->guardarUsuario();
-            break;
-    case 'crearturno':
-            sessionAuthMiddleware($res); 
-            $controller = new CitasControlador();
-            $controller->crearTurno();
-            break;
-    
-    case 'pacientes':
-            sessionAuthMiddleware($res);
-            $controller = new PacientesControl();
-            $controller->getPacientes();
-            break;
-    
-    case 'paciente':
-            sessionAuthMiddleware($res);
-            $controller = new PacientesControl();
-            $controller->getPacientetById($params[1]);
-            break;
-    
-        case 'crearpaciente':
-            sessionAuthMiddleware($res); 
-            $controller = new PacientesControl();
-            $controller->crearPaciente(); 
-            break;
-    
-        case 'editarpaciente':
-            sessionAuthMiddleware($res); 
-            $controller = new PacientesControl();
-            $controller->updatePaciente($params[1]);
-            break;
-    
-        case 'eliminarpaciente':
-            sessionAuthMiddleware($res); 
-            $controller = new PacientesControl();
-            $controller->deletePaciente($params[1]);
-            break;
-    
-        case 'login':
-            $controller = new LoginControlador();
-            $controller->login();
-            break;
-    
-        case 'showLogin':
-            $controller = new LoginControlador();
-            $controller->showLogin();
-            break;
-    
-            default:
-            echo "404 - Página no encontrada";
-            break;
-    }
-    ?>
-  
+        sessionAuthMiddleware($res);
+        $controlador = new UsuarioControlador(); 
+        $controlador->guardarUsuario();
+        break;
+        
+    case 'citas':
+        $controlador = new CitasControlador();
+        $controlador-> obtenerCitas();
+        $controlador->obtenerPacientes();
+        break;
+
+    case 'citaElegida':
+        $controlador = new CitasControlador();
+        $controlador->obtenerCitaPorId($params[1]);
+        break;
+
+    case 'login':
+        $controlador = new AuthControlador();
+        $controlador->login();
+        break;
+
+    case 'mostrarLogin':
+        $controlador = new AuthControlador();
+        $controlador->mostrarLogin();
+        break;
+
+    default:
+        echo "404 - Página no encontrada";
+        break;
+}
