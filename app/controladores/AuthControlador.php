@@ -13,36 +13,39 @@ class AuthControlador {
         $this->vista = new AuthVista();
     }
     
-    public function mostrarLogin(){
-        return $this->vista->mostrarLogin();
-    }
-
-    public function login(){
-        if(!isset($_POST['user']) || empty($_POST['password'])) {
-            return $this->vista->mostrarLogin('Alguno de los datos ingresados es incorrecto');
+    public function showLoginForm()
+    {
+        // Si el usuario ya está logueado, redirigir a otra parte (por ejemplo, al home)
+        if (isset($_SESSION['USER_EMAIL'])) {
+            header("Location: " . BASE_URL . "home");
+            die(); // Evita que el resto del código se ejecute
         }
 
-        $email = $_POST['usuario'];
-        $password = $_POST['password'];
-
-        $usuarioExistente = $this->modelo->getUsuario($email);
-
-        if($usuarioExistente && password_verify($password, $usuarioExistente->password)){
-            session_start();
-            $_SESSION['ID_USER'] = $usuarioExistente->id;
-            $_SESSION['EMAIL_USER'] = $usuarioExistente->email;
-            $_SESSION['LAST_ACTIVITY'] = time();
-
-            header('Location: ' . BASE_URL);
-        } else {
-            return $this->vista->mostrarLogin('Credenciales incorrectas');
-        }        
+        // Mostrar el formulario de login si no está logueado
+        require './templates/home.phtml';
     }
 
-    public function cerrarSesion() {
+    public function login() {
+        // Captura los datos del formulario
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+    
+        // Validar y autenticar al usuario (simulación)
+        if ($email === 'admin@example.com' && $password === 'password') {
+            $_SESSION['email'] = $email;  // Guardamos el email en la sesión
+            header('Location: ' . BASE_URL . 'pacientes');  // Redirige a la página de pacientes
+            exit();  // Detener la ejecución del script para evitar el bucle
+        } else {
+            // Si falla la autenticación, mostrar un mensaje de error
+            echo "Usuario o contraseña incorrectos";
+        }
+    }
+    
+
+    public function logout() {
         session_start(); 
         session_destroy();
-        header('Location: ' . BASE_URL);
+        header('Location: ' . BASE_URL . 'home');
     }
 }
 

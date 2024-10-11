@@ -1,0 +1,24 @@
+<?php require 'templates/header.phtml'; ?>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Paciente</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Motivo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($citas as $cita): ?>
+            <tr>
+                <td><?= htmlspecialchars($cita['id']); ?></td>
+                <td><?= htmlspecialchars($cita['paciente']); ?></td>
+                <td><?= htmlspecialchars($cita['fecha']); ?></td>
+                <td><?= htmlspecialchars($cita['hora']); ?></td>
+                <td><?= htmlspecialchars($cita['motivo']); ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<?php require 'templates/footer.phtml'; ?>

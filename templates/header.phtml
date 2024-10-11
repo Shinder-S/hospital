@@ -1,20 +1,28 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administración del Hospital</title>
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
-<header>
-    <h1>Administración del Hospital</h1>
-    <nav>
-        <ul>
-            <li><a href="/pacientes">Pacientes</a></li>
-            <li><a href="/citas">Citas</a></li>
-            <li><a href="/logout">Cerrar Sesión</a></li>
-        </ul>
-    </nav>
-</header>
-<main>
+    <header>
+        <h1>Administración del Hospital</h1>
+        <nav>
+            <ul>
+                <li><a href="pacientes">Pacientes</a></li>
+                <li><a href="#">Sacar Turno</a></li>
+                <li><a href="citas">Mostrar turnos</a></li>
+                
+                <?php if (isset($_SESSION['email'])): ?>
+                    <li>Bienvenido, <?= htmlspecialchars($_SESSION['email']); ?></li>
+                    <li><a href="logout" class="btn btn-danger">Cerrar Sesión</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    

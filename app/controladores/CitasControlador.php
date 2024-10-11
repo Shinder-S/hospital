@@ -12,16 +12,16 @@ class CitasControlador {
         $this->modelo = new ModeloCitas();
     }
 
-    public function mostrarHome(){
-        $this->vista->mostrarLogin();
+    public function mostrarCitasPorPaciente($idPaciente) {
+        $citas = $this->modelo->citasPorPaciente($idPaciente); 
+        $this->vista->mostrarCitas($citas); 
     }
-
     public function obtenerCitas(){
         $citas = $this->modelo->obtenerCitas();
         $this->vista->mostrarCitas($citas);
     }
-
-    public function obtenerCitaPorId($id){
+}
+   /* public function obtenerCitaPorId($id){
         $cita = $this->modelo->obtenerCitaPorId($id);
         $this->vista->mostrarCitaPorId($cita);
     }
@@ -30,4 +30,4 @@ class CitasControlador {
         $especialidades = $this->modelo->obtenerPacientes();
 
     }
-}
+}*/

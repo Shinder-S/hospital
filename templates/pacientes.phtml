@@ -1,0 +1,27 @@
+<?php require 'templates/header.phtml'; ?>
+<h1>Lista de Pacientes</h1>
+
+<form method="POST" action="agregarPaciente">
+    <input type="text" name="nombre" placeholder="Nombre" required><br>
+    <input type="text" name="apellido" placeholder="Apellido" required><br>
+    <input type="text" name="foto" placeholder="URL de la foto (opcional)"><br>
+    <button type="submit">Agregar Paciente</button>
+</form>
+
+<div class="card-container">
+    <?php foreach ($pacientes as $paciente): ?>
+        <div class="card">
+            <div class="card-content">
+                <h2><?= htmlspecialchars($paciente->nombre) . " " . htmlspecialchars($paciente->apellido); ?></h2>
+                <img src="<?= htmlspecialchars($paciente->foto); ?>" alt="Foto del paciente" width="100">
+                <a href="pacientesporid/<?= htmlspecialchars($paciente->id); ?>" class="btn btn-primary">Ver Detalle</a>
+                <form method="POST" action="eliminarPaciente/<?= htmlspecialchars($paciente->id); ?>" onsubmit="return confirm('¿Estás seguro de eliminar este paciente?');">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+                <a href="editarPaciente/<?= htmlspecialchars($paciente->id); ?>" class="btn btn-secondary">Editar</a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+<?php require 'templates/footer.phtml'; ?>
