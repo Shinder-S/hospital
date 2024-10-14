@@ -17,7 +17,7 @@
                 Editar Paciente
             </a>
 
-            <form action="/pacientes/eliminar/<?= $pacienteporid->id; ?>" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar a este paciente?');">
+            <form action="/pacientes/eliminarPaciente/<?= $pacienteporid->id; ?>" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar a este paciente?');">
                 <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full transition">
                     Eliminar Paciente
                 </button>

@@ -28,6 +28,10 @@ class ModeloPacientes {
         $query = $this->db->prepare('UPDATE pacientes SET nombre=?, apellido=?, foto=? WHERE id=?');
         $query->execute([$nombre, $apellido, $foto, $id]);
     }
+    public function actualizarPaciente($id, $nombre, $apellido,$foto){
+        $query = $this->db->prepare('UPDATE pacientes SET nombre = ?, apellido = ?,foto = ? WHERE id = ?');
+        $query->execute([$nombre, $apellido, $foto, $id]);
+    }
 
     public function eliminarPaciente($id){
         $query = $this->db->prepare('DELETE FROM pacientes WHERE id=?');

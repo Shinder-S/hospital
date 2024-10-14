@@ -39,6 +39,7 @@ class PacientesControlador {
     public function eliminarPaciente($id){
         $this->model->eliminarPaciente($id);
         header('Location: ' . BASE_URL . 'pacientes');
+        exit();
     }
 
     public function editarPaciente($id){
@@ -55,9 +56,9 @@ class PacientesControlador {
             $id = $_POST['id'];
             $nombre = $_POST['nombre'];
             $apellido = $_POST['apellido'];
-            $foto = $_POST['foto'];
+            $foto = $_POST['foto'] ?? null; 
 
-            if ($id && $nombre && $apellido && $foto) {
+            if ($id && $nombre && $apellido) { 
                 $this->model->actualizarPaciente($id, $nombre, $apellido, $foto);
                 header("Location: " . BASE_URL . "pacientes");
                 exit();
