@@ -1,0 +1,25 @@
+<?php require 'header.phtml'; ?>
+
+<div class="bg-gray-100 min-h-screen py-12">
+    <div class="container mx-auto px-4 max-w-md">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center">Editar Paciente</h1>
+
+        <form action="<?= BASE_URL ?>actualizarPaciente" method="POST">
+            <input type="hidden" name="id" value="<?= $paciente->id ?>">
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" value="<?= htmlspecialchars($paciente->nombre) ?>" required><br>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" value="<?= htmlspecialchars($paciente->apellido) ?>" required><br>
+
+            <label for="foto">Foto:</label> 
+            <input type="text" name="foto" value="<?= htmlspecialchars($paciente->foto) ?>">
+
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full">Actualizar</button>
+</form>
+
+    </div>
+</div>
+
+<?php require 'footer.phtml'; ?>

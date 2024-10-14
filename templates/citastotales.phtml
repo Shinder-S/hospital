@@ -1,0 +1,14 @@
+<?php require 'templates/header.phtml'; ?>
+<h2>Citas Totales</h2>
+<?php foreach ($citas as $cita): ?>
+    <div>
+        <p>ID: <?= htmlspecialchars($cita->id) ?></p>
+        <p>Paciente ID: <?= htmlspecialchars($cita->paciente_id) ?></p>
+        <p>Fecha: <?= htmlspecialchars($cita->fecha) ?></p>
+        <p>Hora: <?= htmlspecialchars($cita->hora) ?></p>
+        <a href="<?= BASE_URL . 'editar/' . $cita->id ?>">Editar</a>
+        <a href="<?= BASE_URL . 'eliminar/' . $cita->id ?>">Eliminar</a>
+    </div>
+<?php endforeach; ?>
+
+<?php require 'templates/footer.phtml'; ?>

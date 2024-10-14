@@ -10,7 +10,6 @@ class PacientesControlador {
     public function __construct(){
         $this->model = new ModeloPacientes();
         $this->view = new VistaPacientes();
-
     }
 
     public function mostrarPacientes(){
@@ -18,32 +17,53 @@ class PacientesControlador {
         $this->view->mostrarPacientes($pacientes);
     }
 
-    public function mostrarPacientePorID($id){
-        $pacienteporid = $this->model->obtenerPacientePorID($id);
-        $this->view->mostrarPacientePorID($pacienteporid);
+    public function mostrarPacientePorId($id){
+        $pacienteporid = $this->model->obtenerPacientePorId($id);
+        if (!$pacienteporid) {
+            header('Location: ' . BASE_URL . 'pacientes');
+            exit();
+        }
+
+        $this->view->mostrarPacientePorId($pacienteporid);
     }
+
     public function agregarPaciente(){
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
         $foto = $_POST['foto'] ?? null;
-        $this->model->agregarPaciente($nombre, $apellido, $foto);
+        $this->model->insertarPaciente($nombre, $apellido, $foto);
         header('Location: ' . BASE_URL . 'pacientes');
+        exit();
     }
-    public function actualizarPaciente($id){
-        if (!empty($_POST['nombre']) && !empty($_POST['apellido'])) {
-            $this->model->actualizarPaciente($id, $_POST['nombre'], $_POST['apellido']);
-            header('Location: ' . BASE_URL . 'pacientesporid/' . $id);
-        } else {
-            echo "Error: Faltan campos por completar";
-        }
-    }
-    public function editarPaciente($id){
-        $pacienteporid = $this->model->obtenerPacientePorID($id);
-        $this->view->mostrarPacientePorID($pacienteporid);
-    }
+
     public function eliminarPaciente($id){
         $this->model->eliminarPaciente($id);
         header('Location: ' . BASE_URL . 'pacientes');
     }
-    
+
+    public function editarPaciente($id){
+        $paciente = $this->model->obtenerPacientePorId($id);
+        if (!$paciente) {
+            header("Location: " . BASE_URL . "pacientes");
+            exit();
+        }
+        $this->view->mostrarformueditar($paciente);
+    }
+
+    public function actualizarPaciente(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $foto = $_POST['foto'];
+
+            if ($id && $nombre && $apellido && $foto) {
+                $this->model->actualizarPaciente($id, $nombre, $apellido, $foto);
+                header("Location: " . BASE_URL . "pacientes");
+                exit();
+            }
+        }
+        header("Location: " . BASE_URL . "pacientes");
+        exit();
+    }
 }

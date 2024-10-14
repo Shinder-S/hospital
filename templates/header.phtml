@@ -4,25 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administración del Hospital</title>
-    <link rel="stylesheet" href="/style/style.css">
+    <title>Pacientes</title>
+    <!-- CDN de Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <h1>Administración del Hospital</h1>
-        <nav>
-            <ul>
-                <li><a href="pacientes">Pacientes</a></li>
-                <li><a href="#">Sacar Turno</a></li>
-                <li><a href="citas">Mostrar turnos</a></li>
-                
-                <?php if (isset($_SESSION['email'])): ?>
-                    <li>Bienvenido, <?= htmlspecialchars($_SESSION['email']); ?></li>
-                    <li><a href="logout" class="btn btn-danger">Cerrar Sesión</a></li>
-                <?php endif; ?>
-            </ul>
-        </nav>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Gestión Médica</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="pacientes" class="hover:underline">Pacientes</a></li>
+                    <li><a href="citas" class="hover:underline">Citas</a></li>
+                    <li><a href="login" class="hover:underline">Login</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-
-    <main>
-    
+    </body>
+</html>

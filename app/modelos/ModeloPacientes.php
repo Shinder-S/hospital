@@ -1,5 +1,4 @@
 <?php
-
 class ModeloPacientes {
     private $db;
 
@@ -10,36 +9,30 @@ class ModeloPacientes {
     public function obtenerPacientes(){
         $query = $this->db->prepare('SELECT * FROM pacientes');
         $query->execute();
-
-        $pacientes = $query->fetchAll(PDO::FETCH_OBJ);
-        return $pacientes;
+        return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function obtenerPacientePorID($id){
+    public function obtenerPacientePorId($id){
         $query = $this->db->prepare('SELECT * FROM pacientes WHERE id=?');
         $query->execute([$id]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
 
-        $pacienteporid = $query->fetch(PDO::FETCH_OBJ);
-        return $pacienteporid;
+    public function insertarPaciente($nombre, $apellido, $foto){
+        $query = $this->db->prepare('INSERT INTO pacientes (nombre, apellido, foto) VALUES (?, ?, ?)');
+        $query->execute([$nombre, $apellido, $foto]);
+        return $this->db->lastInsertId();
     }
-        // Función para agregar un nuevo paciente
-        public function agregarPaciente($nombre, $apellido, $foto){
-            $query = $this->db->prepare('INSERT INTO pacientes (nombre, apellido, foto) VALUES (?, ?, ?)');
-            $query->execute([$nombre, $apellido, $foto]);
-        }
-    
-        // Función para editar un paciente existente
-        public function editarPaciente($id, $nombre, $apellido, $foto){
-            $query = $this->db->prepare('UPDATE pacientes SET nombre=?, apellido=?, foto=? WHERE id=?');
-            $query->execute([$nombre, $apellido, $foto, $id]);
-        }
-    
-        // Función para eliminar un paciente
-        public function eliminarPaciente($id){
-            $query = $this->db->prepare('DELETE FROM pacientes WHERE id=?');
-            $query->execute([$id]);
-        }
+
+    public function editarPaciente($id, $nombre, $apellido, $foto){
+        $query = $this->db->prepare('UPDATE pacientes SET nombre=?, apellido=?, foto=? WHERE id=?');
+        $query->execute([$nombre, $apellido, $foto, $id]);
     }
-    
+
+    public function eliminarPaciente($id){
+        $query = $this->db->prepare('DELETE FROM pacientes WHERE id=?');
+        $query->execute([$id]);
+    }
+}
 
 

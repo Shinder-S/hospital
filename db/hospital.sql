@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-10-2024 a las 20:30:16
+-- Tiempo de generación: 13-10-2024 a las 23:12:51
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 7.4.33
 
@@ -39,9 +39,15 @@ CREATE TABLE `citas` (
 --
 
 INSERT INTO `citas` (`id`, `paciente_id`, `fecha`, `hora`) VALUES
-(3, 2, '2024-09-11', '11:50:00'),
-(4, 1, '2024-09-11', '19:50:00'),
-(5, 1, '2024-10-10', '05:05:00');
+(6, 2, '2024-09-11', '11:50:00'),
+(9, 3, '2024-10-12', '09:00:00'),
+(10, 4, '2024-10-13', '14:30:00'),
+(11, 5, '2024-10-14', '10:00:00'),
+(12, 6, '2024-10-15', '11:15:00'),
+(13, 7, '2024-10-16', '16:45:00'),
+(14, 8, '2024-10-17', '12:00:00'),
+(15, 9, '2024-10-18', '13:30:00'),
+(16, 10, '2024-10-19', '15:00:00');
 
 -- --------------------------------------------------------
 
@@ -52,16 +58,25 @@ INSERT INTO `citas` (`id`, `paciente_id`, `fecha`, `hora`) VALUES
 CREATE TABLE `pacientes` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `apellido` varchar(100) NOT NULL
+  `apellido` varchar(100) NOT NULL,
+  `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `pacientes` (`id`, `nombre`, `apellido`) VALUES
-(1, 'pepe ', 'garcia'),
-(2, 'pablo', 'rodriguez');
+INSERT INTO `pacientes` (`id`, `nombre`, `apellido`, `foto`) VALUES
+(2, 'pablo', 'rodriguez', ''),
+(3, 'maria', 'perez', ''),
+(4, 'jose', 'martinez', ''),
+(5, 'ana', 'gonzalez', ''),
+(6, 'laura', 'fernandez', ''),
+(7, 'carlos', 'torres', ''),
+(8, 'juan', 'lopez', ''),
+(9, 'martin', 'morales', ''),
+(10, 'sofia', 'diaz', ''),
+(11, 'Micaela', 'ertret', 'ertrdtert');
 
 -- --------------------------------------------------------
 
@@ -106,13 +121,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`

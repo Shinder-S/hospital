@@ -9,4 +9,7 @@ class VistaPacientes{
     public function mostrarPacientePorID($pacienteporid){
         require './templates/pacienteporid.phtml';
     }
+    public function mostrarformueditar($paciente){
+        require './templates/formueditarpaciente.phtml';
+    }
 }

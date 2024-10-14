@@ -46,7 +46,7 @@ switch ($params[0]) {
         $PacientesControlador = new PacientesControlador();
         $id = $params[1];
         $PacientesControlador->editarPaciente($id);
-         break;
+        break;
     case 'actualizarPaciente':
         $PacientesControlador = new PacientesControlador();
         $id = $params[1];
@@ -60,23 +60,37 @@ switch ($params[0]) {
     case 'citas':
         $controlador = new CitasControlador();
         $controlador->obtenerCitas();
-        $controlador->obtenerPacientes();
         break;
     case 'mostarcitasporID':
-        $citasControlador= new CitasControlador();
-        $id=$param[1];
-        $citasControlador=mostrarCitasPorPaciente($id);
+        $citasControlador = new CitasControlador();
+        $id = $params[1];
+        $citasControlador->mostrarCitasPorPaciente($id);
+        break;
+    case 'eliminarCitas':
+        $citasControlador = new CitasControlador();
+        $id = $params[1];
+        $citasControlador->eliminarCitas($id);  
+        break;
+    case 'agregarCitas':
+        $citasControlador = new CitasControlador();
+        $citasControlador->agregarCitas();  
+        break;
+    case 'editarCitas':
+        $citasControlador = new CitasControlador();
+        $id = $params[1];
+        $citasControlador->editarCitas($id);  
+        break;
     case 'login':
         $authController = new AuthControlador();
-        $authController->login();  // Procesar el login
+        $authController->login();
         break;
     case 'mostrarLogin':
         $authController = new AuthControlador();
-        $authController->showLoginForm();  // Mostrar el formulario de login
+        $authController->showLoginForm();
         break;
-    case 'logout':  // Ruta para cerrar sesión
-        $authController = new AuthControlador();  // Usamos AuthControlador, no AuthController
-        $authController->logout();  // Procesar el logout
+    case 'logout':
+        $authController = new AuthControlador();
+        $authController->logout();
         break;
     default:
         echo "404 - Página no encontrada";
