@@ -12,22 +12,34 @@ class CitasControlador {
         $this->modelo = new ModeloCitas();
     }
 
-    public function mostrarCitasPorPaciente($idPaciente) {
-        $citas = $this->modelo->citasPorPaciente($idPaciente); 
+    public function citaPorPaciente($idPaciente) {
+        $citas = $this->modelo->mostrarCitaPorPaciente($idPaciente); 
         $this->vista->mostrarCitas($citas); 
     }
     public function obtenerCitas(){
         $citas = $this->modelo->obtenerCitas();
         $this->vista->mostrarCitas($citas);
     }
+
+    public function agregarCita(){
+        $paciente_id = $_POST['paciente_id'];
+        $fecha = $_POST['fecha'];
+        $hora = $_POST['hora'];
+        $this->modelo->crearCita($paciente_id, $fecha, $hora);
+        header('Location: ' . BASE_URL . 'citas');
+        exit();
+    }
+
+    public function editarCita($id){
+        $cita = $this->modelo->mostrarCitaPorPaciente($id);
+        if(!$cita) {
+            header("Location: " . BASE_URL . "citas");
+            exit();
+        }
+        $this->vista->mostrarCitaPorPaciente($cita);
+    }
+
+    public function eliminarCita(){
+
+    }
 }
-   /* public function obtenerCitaPorId($id){
-        $cita = $this->modelo->obtenerCitaPorId($id);
-        $this->vista->mostrarCitaPorId($cita);
-    }
-
-    public function obtenerPacientes(){
-        $especialidades = $this->modelo->obtenerPacientes();
-
-    }
-}*/

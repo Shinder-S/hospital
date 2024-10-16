@@ -1,5 +1,5 @@
 <?php
-session_start();  
+session_start();
 
 require_once "./app/controladores/CitasControlador.php";
 require_once "./app/controladores/AuthControlador.php";
@@ -33,10 +33,10 @@ switch ($params[0]) {
         $PacientesControlador = new PacientesControlador();
         $PacientesControlador->mostrarPacientes();
         break;
-    case 'pacientesporid':
+    case 'pacientesPorId':
         $PacientesControlador = new PacientesControlador();
         $id = $params[1];
-        $PacientesControlador->mostrarPacientePorID($id);
+        $PacientesControlador->mostrarPacientePorId($id);
         break;
     case 'agregarPaciente':
         $PacientesControlador = new PacientesControlador();
@@ -61,24 +61,24 @@ switch ($params[0]) {
         $controlador = new CitasControlador();
         $controlador->obtenerCitas();
         break;
-    case 'mostarcitasporID':
+    case 'agregarCita':
+        $citasControlador = new CitasControlador();
+        $citasControlador->agregarCita();  
+        break;
+    case 'editarCita':
         $citasControlador = new CitasControlador();
         $id = $params[1];
-        $citasControlador->mostrarCitasPorPaciente($id);
+        $citasControlador->editarCita($id);  
         break;
-    case 'eliminarCitas':
+    case 'mostarCitaPorId':
         $citasControlador = new CitasControlador();
         $id = $params[1];
-        $citasControlador->eliminarCitas($id);  
+        $citasControlador->citaPorPaciente($id);
         break;
-    case 'agregarCitas':
-        $citasControlador = new CitasControlador();
-        $citasControlador->agregarCitas();  
-        break;
-    case 'editarCitas':
+    case 'eliminarCita':
         $citasControlador = new CitasControlador();
         $id = $params[1];
-        $citasControlador->editarCitas($id);  
+        $citasControlador->eliminarCita($id);  
         break;
     case 'login':
         $authController = new AuthControlador();

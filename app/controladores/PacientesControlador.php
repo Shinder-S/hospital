@@ -18,13 +18,13 @@ class PacientesControlador {
     }
 
     public function mostrarPacientePorId($id){
-        $pacienteporid = $this->model->obtenerPacientePorId($id);
-        if (!$pacienteporid) {
+        $pacientePorId = $this->model->obtenerPacientePorId($id);
+        if (!$pacientePorId) {
             header('Location: ' . BASE_URL . 'pacientes');
             exit();
         }
 
-        $this->view->mostrarPacientePorId($pacienteporid);
+        $this->view->mostrarPacientePorId($pacientePorId);
     }
 
     public function agregarPaciente(){

@@ -1,0 +1,13 @@
+<?php require 'templates/header.phtml'; ?>
+
+<?php
+require_once './app/modelos/ModeloCitas.php';
+
+if (isset($_GET['paciente_id'])) {
+    $modeloCitas = new ModeloCitas();
+    $citas = $modeloCitas->obtenerCitasPorPaciente($_GET['paciente_id']);
+    echo json_encode($citas);
+}
+?>
+
+<?php require 'templates/footer.phtml'; ?>
