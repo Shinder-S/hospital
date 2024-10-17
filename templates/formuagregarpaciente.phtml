@@ -1,7 +1,27 @@
 
-<form action="agregarPaciente" method="POST" >
-    <input type="text" name="nombre" placeholder="Nombre" required><br>
-    <input type="text" name="apellido" placeholder="Apellido" required><br>
-    <input type="text" name="foto" placeholder="URL de la foto (opcional)"><br>
-    <button type="submit">Agregar Paciente</button>
-</form>
+<main class="container mx-auto mt-8">
+    <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Agregar Paciente</h2>
+
+    <div class="bg-white shadow-lg rounded-lg p-6">
+        <form action="agregarPaciente" method="POST">
+            <div class="mb-4">
+                <label for="nombre" class="block text-gray-700 font-bold mb-2">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <div class="mb-4">
+                <label for="apellido" class="block text-gray-700 font-bold mb-2">Apellido:</label>
+                <input type="text" name="apellido" id="apellido" placeholder="Apellido" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <div class="mb-4">
+                <label for="foto" class="block text-gray-700 font-bold mb-2">URL de la foto (opcional):</label>
+                <input type="text" name="foto" id="foto" placeholder="URL de la foto (opcional)" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full transition">
+                Agregar Paciente
+            </button>
+        </form>
+    </div>
+</main>

@@ -13,34 +13,35 @@ class AuthControlador {
         $this->vista = new AuthVista();
     }
     
-    public function showLoginForm()
-    {
-        // Si el usuario ya está logueado, redirigir a otra parte (por ejemplo, al home)
-        if (isset($_SESSION['USER_EMAIL'])) {
-            header("Location: " . BASE_URL . "home");
-            die(); // Evita que el resto del código se ejecute
+    public function showLoginForm(){
+            if (isset($_SESSION['USER_EMAIL'])) {
+                header("Location: " . BASE_URL . "pacientes");
+                die(); 
+            }
+            require './templates/home.phtml';
         }
-
-        // Mostrar el formulario de login si no está logueado
-        require './templates/home.phtml';
-    }
 
     public function login() {
-        // Captura los datos del formulario
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            var_dump($_POST); 
+            $email = $_POST['email'] ?? null; 
+            $password = $_POST['password'] ?? null;
     
-        // Validar y autenticar al usuario (simulación)
-        if ($email === 'admin@example.com' && $password === 'password') {
-            $_SESSION['email'] = $email;  // Guardamos el email en la sesión
-            header('Location: ' . BASE_URL . 'pacientes');  // Redirige a la página de pacientes
-            exit();  // Detener la ejecución del script para evitar el bucle
-        } else {
-            // Si falla la autenticación, mostrar un mensaje de error
-            echo "Usuario o contraseña incorrectos";
+            if (empty($email) || empty($password)) {
+                echo "Los campos no pueden estar vacíos.";
+                return;
+            }
+    
+            $usuario = $this->modelo->getUsuario($email);
+            if ($usuario && password_verify($password, $usuario->password)) {
+                $_SESSION['USER_EMAIL'] = $usuario->email;
+                header('Location: ' . BASE_URL . 'pacientes');
+                exit();
+            } else {
+                echo "Usuario o contraseña incorrectos";
+            }
         }
     }
-    
 
     public function logout() {
         session_start(); 

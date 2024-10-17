@@ -10,9 +10,10 @@ class ModeloUsuario {
     public function getUsuario($email){
         $seleccionar = $this->database->prepare("SELECT * FROM usuario WHERE email = ?");
         $seleccionar->execute([$email]);
-
+    
         $usuario = $seleccionar->fetch(PDO::FETCH_OBJ);
-
+    
         return $usuario;
     }
+    
 }

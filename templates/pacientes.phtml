@@ -1,5 +1,5 @@
-<?php require 'header.phtml'?>
-<?php require 'formuagregarpaciente.phtml'?>
+<?php require 'header.phtml'; ?>
+<?php require 'formuagregarpaciente.phtml'; ?>
 <main class="container mx-auto mt-8">
     <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Listado de Pacientes</h2>
 
@@ -15,6 +15,16 @@
                     <p class="text-gray-700 mb-4">
                         <span class="font-bold">Apellido:</span> <?php echo htmlspecialchars($paciente->apellido); ?>
                     </p>
+                    
+                    <!-- Mostrar la foto del paciente -->
+                    <?php if (!empty($paciente->foto)): ?>
+                        <div class="mb-4">
+                            <img src="<?= htmlspecialchars($paciente->foto); ?>" alt="Foto de <?= htmlspecialchars($paciente->nombre); ?>" class="w-32 h-32 object-cover rounded-full">
+                        </div>
+                    <?php else: ?>
+                        <p>No se proporcionó una foto.</p>
+                    <?php endif; ?>
+
                     <div class="flex justify-between items-center">
                         <a href="pacienteporid/<?php echo $paciente->id; ?>" 
                            class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full transition">

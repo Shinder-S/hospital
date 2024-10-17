@@ -18,7 +18,7 @@ $params = explode('/', $accion);
 $publicRoutes = ['home', 'login', 'logout', 'pacientes'];  // Definimos las rutas públicas
 
 // Proteger las rutas privadas, asegurando que el usuario esté logueado
-if (!in_array($params[0], $publicRoutes) && !isset($_SESSION['email'])) {
+if (!in_array($params[0], $publicRoutes) && !isset($_SESSION['USER_EMAIL'])) {
     header('Location: ' . BASE_URL . 'home');  // Redirigir al home/login si no está autenticado
     exit();
 }
