@@ -9,16 +9,31 @@ class ModeloCitas {
     }
 
    public function obtenerCitas(){
-        $citasTotales = $this->db ->prepare('SELECT * FROM citas');
-        $citasTotales->execute();
-        $turnosTotales = $citastotales ->fetchAll(PDO::FETCH_OBJ);
-        return $turnosTotales;
+        $query = $this->db ->prepare('SELECT c.*, p.nombre, p.apellido FROM citas c 
+                                     JOIN pacientes p ON c.paciente_id = p.id');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
    }
 
-    public function mostrarCitasPorPaciente($paciente_id) {
-        $idPaciente = $this->db->prepare("SELECT * FROM citas WHERE paciente_id = ?");
-        $idPaciente->execute([$paciente_id]);
-        $cita = $idPaciente->fetch(PDO::FETCH_OBJ);
-        return $cita;
+    public function obtenerCitasPorPaciente($paciente_id) {
+        $query = $this->db->prepare("SELECT * FROM citas WHERE paciente_id = ?");
+        $query->execute([$paciente_id]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function crearCita($paciente_id, $fecha, $hora){
+        $query = $this->db->prepare('INSERT INTO citas (paciente_id, fecha, hora) VALUES (?, ?, ?)');
+        $query->execute([$paciente_id, $fecha, $hora]);
+        return $this->db->lastInsertId();
+    }
+
+    public function editarCita($paciente_id, $fecha, $hora, $id){
+        $query = $this->db->prepare('UPDATE citas SET paciente_id=?, fecha=?, hora=? WHERE id=?');
+        $query->execute([$paciente_id, $fecha, $hora, $id]);
+    }
+
+    public function eliminarCita($id){
+        $query = $this->db->prepare('DELETE FROM citas WHERE id=?');
+        $query->execute([$id]);
     }
 }

@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <?php require 'header.phtml'; ?>
 <?php require 'formuagregarpaciente.phtml'; ?>
+=======
+<?php require 'header.phtml'?>
+<?php require 'formuAgregarPaciente.phtml'?>
+>>>>>>> 695ad85e6016c77e603b2409ab83a224f33e3004
 <main class="container mx-auto mt-8">
     <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Listado de Pacientes</h2>
 
@@ -26,7 +31,7 @@
                     <?php endif; ?>
 
                     <div class="flex justify-between items-center">
-                        <a href="pacienteporid/<?php echo $paciente->id; ?>" 
+                        <a href="pacientePorId/<?php echo $paciente->id; ?>" 
                            class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full transition">
                             Ver detalles
                         </a>
@@ -35,7 +40,7 @@
                                class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-full transition">
                                 Editar
                             </a>
-                            <form action="/pacientes/eliminar/<?php echo $paciente->id; ?>" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar a este paciente?');">
+                            <form action="eliminar/<?php echo $paciente->id; ?>" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar a este paciente?');">
                                 <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full transition">
                                     Eliminar
                                 </button>
