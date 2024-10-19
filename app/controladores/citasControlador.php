@@ -31,15 +31,17 @@ class CitasControlador {
     }
 
     public function editarCita($id){
-        $cita = $this->modelo->mostrarCitaPorPaciente($id);
+        $cita = $this->modelo->obtenerCitasPorPaciente($id);
         if(!$cita) {
             header("Location: " . BASE_URL . "citas");
             exit();
         }
         $this->vista->mostrarCitaPorPaciente($cita);
     }
-
-    public function eliminarCita(){
-
+    public function eliminarCita($id){
+        $this->modelo->eliminarCita($id);
+        header('Location: ' . BASE_URL . 'citas'); 
+        
+        exit();
     }
 }
