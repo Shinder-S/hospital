@@ -21,7 +21,7 @@ class ModeloCitas {
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    public function crearCita($paciente_id, $fecha, $hora){
+    public function agregarCita($paciente_id, $fecha, $hora){
         $query = $this->db->prepare('INSERT INTO citas (paciente_id, fecha, hora) VALUES (?, ?, ?)');
         $query->execute([$paciente_id, $fecha, $hora]);
         return $this->db->lastInsertId();

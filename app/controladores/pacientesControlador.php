@@ -1,7 +1,7 @@
 <?php
 
-require_once 'app/modelos/ModeloPacientes.php';
-require_once 'app/vistas/VistaPacientes.php';
+require_once 'app/modelos/modeloPacientes.php';
+require_once 'app/vistas/vistaPacientes.php';
 
 class PacientesControlador {
     private $model;

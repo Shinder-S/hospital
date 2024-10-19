@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-require_once "./app/controladores/CitasControlador.php";
-require_once "./app/controladores/AuthControlador.php";
-require_once './app/controladores/PacientesControlador.php';
+require_once "./app/controladores/citasControlador.php";
+require_once "./app/controladores/authControlador.php";
+require_once './app/controladores/pacientesControlador.php';
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 

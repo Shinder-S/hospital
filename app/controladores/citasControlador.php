@@ -1,6 +1,6 @@
 <?php
-require_once './app/modelos/ModeloCitas.php';
-require_once './app/vistas/VistaCitas.php';
+require_once './app/modelos/modeloCitas.php';
+require_once './app/vistas/vistaCitas.php';
 
 class CitasControlador {
 
@@ -13,7 +13,7 @@ class CitasControlador {
     }
 
     public function citaPorPaciente($idPaciente) {
-        $citas = $this->modelo->mostrarCitaPorPaciente($idPaciente); 
+        $citas = $this->modelo->obtenerCitasPorPaciente($idPaciente); 
         $this->vista->mostrarCitas($citas); 
     }
     public function obtenerCitas(){
@@ -25,7 +25,7 @@ class CitasControlador {
         $paciente_id = $_POST['paciente_id'];
         $fecha = $_POST['fecha'];
         $hora = $_POST['hora'];
-        $this->modelo->crearCita($paciente_id, $fecha, $hora);
+        $this->modelo->agregarCita($paciente_id, $fecha, $hora);
         header('Location: ' . BASE_URL . 'citas');
         exit();
     }

@@ -4,6 +4,7 @@ class VistaPacientes{
 
     public function mostrarPacientes($pacientes){
         require './templates/pacientes.phtml';
+        require './templates/agregarCitas.phtml';
     }
 
     public function mostrarPacientePorID($pacientePorId){

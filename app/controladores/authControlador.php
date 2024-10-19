@@ -1,7 +1,7 @@
 <?php
 
-require_once './app/modelos/ModeloUsuario.php';
-require_once './app/vistas/AuthVista.php';
+require_once './app/modelos/modeloUsuario.php';
+require_once './app/vistas/authVista.php';
 
 class AuthControlador {
 

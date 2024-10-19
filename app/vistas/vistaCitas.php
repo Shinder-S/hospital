@@ -11,4 +11,7 @@ class VistaCitas{
     public function mostrarFormularioCitas($cita){
         require './templates/formularioCitas.phtml';
     }   
+    public function agregarCita($pacientes){
+        require './templates/agregarCita.phtml';
+    }
 }    
