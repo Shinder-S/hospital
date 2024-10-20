@@ -1,3 +1,10 @@
+<?php
+if (!isset($_SESSION['user_id'])) {
+    echo '<div class="bg-red-500 text-white p-4 rounded-lg mb-4 text-center"> 
+            Debes iniciar sesión para agregar un paciente.
+          </div>';
+} else {
+?>
 <main class="container mx-auto mt-8">
     <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Solicitar Turno</h2>
 
@@ -32,3 +39,7 @@
         </form>
     </div>
 </main>
+<?php
+}
+?>
+
