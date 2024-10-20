@@ -1,26 +1,33 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion medica</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
-        <h2 class="text-2xl font-bold text-center mb-6 text-blue-600">Iniciar Sesión</h2>
+<?php require "header.phtml"; ?>
+
+<main class="container mx-auto mt-8">
+    <div class="text-center mb-8">
+        <h1 class="text-5xl font-bold text-gray-800 mb-4">Bienvenido a la Gestión Médica</h1>
+        <p class="text-lg text-gray-600 mb-4">
+            Estamos encantados de tenerte aquí. Este sistema está diseñado para facilitar la gestión de información médica y mejorar la atención al paciente.
+        </p>
+        <p class="text-lg text-gray-600 mb-4">
+            Navega a través de las distintas secciones para comenzar a gestionar tus pacientes y citas de manera efectiva.
+        </p>
+        <p class="text-lg text-gray-600 mb-4">
+            Si necesitas ayuda, no dudes en contactar a nuestro soporte.
+        </p>
+    </div>
+
+    <div class="bg-white shadow-lg rounded-lg p-8 max-w-md mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-6 text-blue-600">Iniciar Sesión</h2>
         
         <form action="login" method="POST">
             <div class="mb-4">
                 <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Correo Electrónico</label>
-                <input type="text" id="email" name="email" required 
-                       class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">
+                <input type="email" id="email" name="email" required 
+                       class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500 transition duration-300">
             </div>
 
             <div class="mb-6">
                 <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
                 <input type="password" id="password" name="password" required 
-                       class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">
+                       class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500 transition duration-300">
             </div>
 
             <div class="flex items-center justify-between">
@@ -30,5 +37,7 @@
             </div>
         </form>
     </div>
-</body>
-</html>
+</main>
+<footer class="bg-gray-200 text-center p-4 mt-8">
+    <p class="text-gray-600">© 2024 Gestión Médica. Todos los derechos reservados.</p>
+</footer>
