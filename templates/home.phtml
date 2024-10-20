@@ -1,6 +1,11 @@
-<?php
-require "header.phtml";
-?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion medica</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
         <h2 class="text-2xl font-bold text-center mb-6 text-blue-600">Iniciar Sesión</h2>
@@ -8,7 +13,7 @@ require "header.phtml";
         <form action="login" method="POST">
             <div class="mb-4">
                 <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Correo Electrónico</label>
-                <input type="email" id="email" name="email" required 
+                <input type="text" id="email" name="email" required 
                        class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500">
             </div>
 

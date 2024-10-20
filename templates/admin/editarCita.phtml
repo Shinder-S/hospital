@@ -1,0 +1,16 @@
+<h2>Editar Cita</h2>
+<form action="<?= BASE_URL ?>admin/citas/editar/<?= $cita->id ?>" method="POST">
+    <div>
+        <label>ID Paciente:</label>
+        <input type="text" name="paciente_id" value="<?= htmlspecialchars($cita->paciente_id) ?>" required>
+    </div>
+    <div>
+        <label>Fecha:</label>
+        <input type="date" name="fecha" value="<?= htmlspecialchars($cita->fecha) ?>" required>
+    </div>
+    <div>
+        <label>Hora:</label>
+        <input type="time" name="hora" value="<?= htmlspecialchars($cita->hora) ?>" required>
+    </div>
+    <button type="submit">Actualizar Cita</button>
+</form>

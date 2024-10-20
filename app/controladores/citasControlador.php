@@ -26,7 +26,7 @@ class CitasControlador {
         $fecha = $_POST['fecha'];
         $hora = $_POST['hora'];
         $this->modelo->agregarCita($paciente_id, $fecha, $hora);
-        header('Location: ' . BASE_URL . 'citas');
+        header('Location: ' . BASE_URL . 'admin/citas');
         exit();
     }
 
