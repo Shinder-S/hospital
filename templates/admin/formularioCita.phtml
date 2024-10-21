@@ -1,0 +1,26 @@
+<?php require 'header.phtml'; ?>
+
+<main class="container mx-auto mt-8">
+    <h2 class="text-3xl font-bold mb-8 text-center text-gray-800"><?= $cita ? 'Editar Cita' : 'Crear Nueva Cita' ?></h2>
+    
+    <form action="<?= $cita ? 'editarCita/'.$cita->id : 'agregarCita' ?>" method="POST">
+        <div class="mb-4">
+            <label for="paciente_id" class="block text-gray-700">ID del Paciente:</label>
+            <input type="text" id="paciente_id" name="paciente_id" class="w-full p-2 border rounded" value="<?= htmlspecialchars($cita->paciente_id ?? '') ?>" required>
+        </div>
+        
+        <div class="mb-4">
+            <label for="fecha" class="block text-gray-700">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" class="w-full p-2 border rounded" value="<?= htmlspecialchars($cita->fecha ?? '') ?>" required>
+        </div>
+        
+        <div class="mb-4">
+            <label for="hora" class="block text-gray-700">Hora:</label>
+            <input type="time" id="hora" name="hora" class="w-full p-2 border rounded" value="<?= htmlspecialchars($cita->hora ?? '') ?>" required>
+        </div>
+        
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded transition"><?= $cita ? 'Actualizar Cita' : 'Crear Cita' ?></button>
+    </form>
+</main>
+
+<?php require 'footer.phtml'; ?>

@@ -1,0 +1,14 @@
+<?php
+require 'header.phtml';
+?>
+<form action="<?php echo BASE_URL; ?>citas/actualizarCita/<?php echo $cita->id; ?>" method="POST">
+    <input type="hidden" name="id" value="<?php echo $cita->id; ?>">
+    <label for="fecha">Fecha:</label>
+    <input type="date" name="fecha" value="<?php echo $cita->fecha; ?>" required>
+    <label for="hora">Hora:</label>
+    <input type="time" name="hora" value="<?php echo $cita->hora; ?>" required>
+    <button type="submit">Actualizar Cita</button>
+</form>
+<?php
+require 'footer.phtml';
+?>
