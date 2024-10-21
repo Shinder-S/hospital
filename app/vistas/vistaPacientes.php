@@ -6,8 +6,8 @@ class VistaPacientes{
         require './templates/pacientes.phtml';
     }
 
-    public function mostrarPacientePorID($pacientePorId){
-        require './templates/pacientePorId.phtml';
+    public function mostrarPacientePorID($pacientePorId, $citas) {
+        require './templates/verDetallesPaciente.phtml';
     }
     public function mostrarFormuEditar($paciente){
         require './templates/formuEditarPaciente.phtml';

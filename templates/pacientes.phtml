@@ -17,7 +17,7 @@
                         <span class="font-bold">Apellido:</span> <?php echo htmlspecialchars($paciente->apellido); ?>
                     </p>
                     
-                    <!-- Mostrar la foto del paciente -->
+                
                     <?php if (!empty($paciente->foto)): ?>
                         <div class="mb-4">
                             <img src="<?= htmlspecialchars($paciente->foto); ?>" alt="Foto de <?= htmlspecialchars($paciente->nombre); ?>" class="w-32 h-32 object-cover rounded-full">
@@ -27,7 +27,7 @@
                     <?php endif; ?>
 
                     <div class="flex justify-between items-center">
-                        <a href="pacientePorId/<?php echo $paciente->id; ?>" 
+                        <a href="<?= BASE_URL ?>verDetallesPaciente/<?= $paciente->id; ?>" 
                            class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full transition">
                             Ver detalles
                         </a>

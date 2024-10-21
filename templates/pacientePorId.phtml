@@ -1,4 +1,6 @@
-<?php require 'header.phtml'; ?>
+<?php
+require 'header.phtml'; 
+?>
 
 <main class="container mx-auto mt-8">
     <h2 class="text-3xl font-bold mb-8 text-center text-gray-800">Detalles del Paciente</h2>
@@ -12,16 +14,20 @@
         </p>
 
         <div class="flex justify-between items-center mt-6">
-            <a href="/pacientes/editar/<?= $pacientePorId->id; ?>" 
-               class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-full transition">
-                Editar Paciente
-            </a>
+            <?php if (isset($_SESSION['USER_EMAIL'])): ?>
+                <a href="/pacientes/editar/<?= $pacientePorId->id; ?>" 
+                   class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-full transition">
+                    Editar Paciente
+                </a>
 
-            <form action="/pacientes/eliminarPaciente/<?= $pacientePorId->id; ?>" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar a este paciente?');">
-                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full transition">
-                    Eliminar Paciente
-                </button>
-            </form>
+                <form action="/pacientes/eliminarPaciente/<?= $pacientePorId->id; ?>" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar a este paciente?');">
+                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full transition">
+                        Eliminar Paciente
+                    </button>
+                </form>
+            <?php else: ?>
+                <p class="text-gray-700">Debes iniciar sesión para editar o eliminar pacientes.</p>
+            <?php endif; ?>
         </div>
     </div>
 </main>

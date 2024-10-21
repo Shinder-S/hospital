@@ -15,7 +15,7 @@ if (!empty($_GET['action'])) {
 
 $params = explode('/', $accion);
 
-$publicRoutes = ['home', 'login', 'logout', 'pacientes'];  // Definimos las rutas públicas
+$publicRoutes = ['home', 'login', 'logout', 'pacientes','citas'];  // Definimos las rutas públicas
 
 // Proteger las rutas privadas, asegurando que el usuario esté logueado
 if (!in_array($params[0], $publicRoutes) && !isset($_SESSION['USER_EMAIL'])) {
@@ -92,6 +92,11 @@ switch ($params[0]) {
         $authController = new AuthControlador();
         $authController->logout();
         break;
+    case 'verDetallesPaciente':
+        $PacientesControlador = new PacientesControlador();
+        $id = $params[1]; 
+        $PacientesControlador->mostrarPacientePorId($id); 
+         break;
     default:
         echo "404 - Página no encontrada";
         break;

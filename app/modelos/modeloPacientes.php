@@ -37,6 +37,13 @@ class ModeloPacientes {
         $query = $this->db->prepare('DELETE FROM pacientes WHERE id=?');
         $query->execute([$id]);
     }
+    public function obtenerCitasPorPacienteId($pacienteId) {
+        $query = "SELECT * FROM citas WHERE paciente_id = :paciente_id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':paciente_id', $pacienteId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }
 
 

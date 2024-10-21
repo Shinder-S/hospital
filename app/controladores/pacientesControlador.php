@@ -16,15 +16,16 @@ class PacientesControlador {
         $pacientes = $this->model->obtenerPacientes();
         $this->view->mostrarPacientes($pacientes);
     }
-
-    public function mostrarPacientePorId($id){
+    public function mostrarPacientePorId($id) {
         $pacientePorId = $this->model->obtenerPacientePorId($id);
         if (!$pacientePorId) {
             header('Location: ' . BASE_URL . 'pacientes');
             exit();
         }
-
-        $this->view->mostrarPacientePorId($pacientePorId);
+    
+        $citas = $this->model->obtenerCitasPorPacienteId($id);
+    
+        $this->view->mostrarPacientePorId($pacientePorId, $citas);
     }
 
     public function agregarPaciente(){
@@ -67,4 +68,20 @@ class PacientesControlador {
         header("Location: " . BASE_URL . "pacientes");
         exit();
     }
+    public function verDetallesPaciente() {
+        if (!isset($_GET['id'])) {
+            header('Location: ' . BASE_URL . 'pacientes'); // Redirige si no hay ID
+            exit();
+        }
+        $pacienteId = $_GET['id']; 
+        $pacientePorId = $this->model->obtenerPacientePorId($pacienteId);
+        if (!$pacientePorId) {
+            header('Location: ' . BASE_URL . 'pacientes');
+            exit();
+        }
+        $citas = $this->model->obtenerCitasPorPacienteId($pacienteId);
+        $this->view->mostrarPacientePorID($pacientePorId, $citas);
+    }
+    
+ 
 }
